@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <script src="../../JS/mensajes_recibidos.js" defer></script>
+    <link rel="stylesheet" href="../css/mensajes_recibidos.css">
+</head>
+<body>
+    <div id="modalMensaje" class="modal" style="display: none;">
+        <div class="contenedorModal">
+            <span id="cerrarModal" class="close">&times;</span>
+        <h3>Responder mensaje</h3>
+        <textarea id="respuestaTexto" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea><br>
+        <button id="btnEnviarRespuesta">Enviar</button>
+        </div>
+    </div>
+    <div class="cabecera">
+        <img class="title_vocesPapel" src="../images/voces_papel.webp"></img> 
+        <div id="btn_inicio"><a href="index.html">Inicio</a></div>
+        <div id="btn_foro"><a href="main_foro.html">Foros</a></div>
+        <select id="desplegable_mercado" onchange="navegarMercado(this.value)">
+            <option disabled selected hidden>Mercado</option>
+            <option value="tienda.html">Tienda</option>
+            <option value="ventas.html">Mis ventas</option>
+        </select>
+        
+        <label id="lblNombreUsuario"></label>
+        <div id="btn_perfil"><a href="mensajes_recibidos.html">Mensajes Recibidos</a></div>
+        <div id="btn_cerrar"><a href="login.html">Salir</a></div>
+        
+    </div>
+    <h1>Mis Mensajes</h1>
+    <div id="mensajesContainer">
+        
+    </div>
+    <script>
+                
+        function navegarMercado(url) {
+            if (url) {
+                window.location.href = url; 
+            }
+        }
+    </script>
+
+    
+
+</body>
+</html>

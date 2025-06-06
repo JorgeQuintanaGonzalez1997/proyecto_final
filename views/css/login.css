@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: blanchedalmond;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.title_vocesPapel {
+    
+    background-size: contain;
+    height: 200px;
+    width: 300px;
+}
+/* CABECERA */
+.cabecera {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("/views/images/fondo_madera.jpg");
+    background-size: cover;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.cabecera > * {
+    background-color: #a85822d3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+}
+/* LOGIN */
+.contenedor_login {
+    background: #fff;
+    max-width: 350px;
+    margin: 40px auto;
+    padding: 32px 28px 24px 28px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+}
+.contenedor_login h2 {
+    margin-top: 0;
+    color: #2d3a4b;
+    text-align: center;
+}
+.contenedor_login label {
+    display: block;
+    margin-bottom: 6px;
+    color: #2d3a4b;
+    font-weight: 500;
+}
+.contenedor_login input[type="text"],
+.contenedor_login input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #bfc9d9;
+    border-radius: 8px;
+    background: #f7fafd;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+.contenedor_login input:focus {
+    border-color: blanchedalmond;
+    outline: none;
+}
+.contenedor_login button[type="submit"] {
+    width: 100%;
+    padding: 10px 0;
+    background: blanchedalmond;
+    color: #2d3a4b;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.contenedor_login button[type="submit"]:hover {
+    background: #ffe4c4;
+}
+#btn_registrar {
+    margin-top: 18px;
+    text-align: center;
+}
+#btn_registrar a {
+    color: #2d3a4b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+#btn_registrar a:hover {
+    color: #2d3a4b;
+    text-decoration: underline;
+}
+#mensaje {
+    color: #d9534f;
+    text-align: center;
+    margin-top: 12px;
+    min-height: 20px;
+}

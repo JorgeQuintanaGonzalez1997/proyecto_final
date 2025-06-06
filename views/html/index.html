@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voces de papel</title>
+    <link rel="stylesheet" href="../css/index.css">
+    
+    <script src="../../JS/pantalla_principal.js" defer></script> 
+</head>
+    <body>
+        
+        <div class="cabecera">
+            <img class="title_vocesPapel" src="../images/voces_papel.webp">
+            <div id="btn_inicio"><a href="index.html">Inicio</a></div>
+            <div id="btn_foro"><a href="main_foro.html">Foros</a></div>
+            <select id="desplegable_mercado" onchange="navegarMercado(this.value)">
+                <option disabled selected hidden>Mercado</option>
+                <option value="tienda.html">Tienda</option>
+                <option value="ventas.html">Mis ventas</option>
+            </select>
+            
+            <label id="lblNombreUsuario"></label>
+            
+            <div id="btn_perfil"><a href="mensajes_recibidos.html">Mensajes Recibidos</a></div>
+            <span id="notificacionMensajes" style="display: none; color: red; font-weight: bold;">!</span>
+            <div id="btn_cerrar"><a href="login.html">Salir</a></div>
+            
+        </div>
+        <div class="presentacion_0">Voces de papel es una página web centrada en fomentar la compra y venta de 
+            libros tanto físicos como digitales.
+            Además dispone de unos foros para poder crear comunidad.
+        </div>
+        <div class="presentacion_1">
+            <div>
+                <img src="/views/images/libros.PNG" id="img_libros" height="70">
+                <strong>Compra y venta de libros</strong>
+                <span class="texto-hover">Explora y adquiere libros únicos</span>
+            </div>
+            <div>
+                <img src="/views/images/puja.PNG" height="70">
+                <strong>Pujas</strong>
+                <span class="texto-hover">Participa en subastas y gana libros</span>
+            </div>
+            <div>
+                <img src="/views/images/foro.webp" height="70">
+                <strong>Foros</strong>
+                <span class="texto-hover">Comparte y debate sobre literatura</span>
+            </div>
+            <div>
+                <img src="/views/images/perfil.PNG" height="70">
+                <strong>Perfil y puntos</strong>
+                <span class="texto-hover">Consulta tu perfil y tus logros</span>
+            </div>
+        </div>
+        <div class="presentacion_2">
+            Creemos en el poder de los libros. Por eso, hemos creado esta plataforma para incentivar la lectura y enriquecer tu vida con cada página. Explora nuestra cuidada selección, las opiniones de otros lectores y encuentra ofertas irresistibles para que nunca te falte una buena historia que leer.
+        </div>
+        <script>
+                
+            function navegarMercado(url) {
+                if (url) {
+                    window.location.href = url; 
+                }
+            }
+        </script>
+    </body>
+</html>

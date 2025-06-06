@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Foro</title>
+        
+        <link rel="stylesheet" href="../css/main_foro.css">
+    </head>
+    <body>
+        <div class="cabecera">
+            <img class="title_vocesPapel" src="../images/voces_papel.webp"></img> 
+            <div id="btn_inicio"><a href="index.html">Inicio</a></div>
+            <div id="btn_foro"><a href="main_foro.html">Foros</a></div>
+            <select id="desplegable_mercado" onchange="navegarMercado(this.value)">
+                <option disabled selected hidden>Mercado</option>
+                <option value="tienda.html">Tienda</option>
+                <option value="ventas.html">Mis ventas</option>
+            </select>
+            
+            <label id="lblNombreUsuario"></label>
+            <div id="btn_perfil"><a href="mensajes_recibidos.html">Mensajes Recibidos</a></div>
+            <span id="notificacionMensajes" style="display: none; color: red; font-weight: bold;">!</span>
+            <div id="btn_cerrar"><a href="login.html">Salir</a></div>
+            
+        </div>
+        <label id="sub_foros">Sub foros</label>
+        <ul id="listaEnlaces">
+            
+        </ul>
+        <form id="formCrearSubForo">
+            <input type="text" id="nombreSubForo" placeholder="Nombre del subforo" required>
+            <button type="submit">Crear SubForo</button>
+        </form>
+
+
+
+
+        
+        
+    
+        <script src="../../JS/foro_crear_temas.js"></script>
+        <script>
+                
+            function navegarMercado(url) {
+                if (url) {
+                    window.location.href = url; 
+                }
+            }
+        </script>
+
+    </body>
+</html>

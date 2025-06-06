@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubForo</title>
+    
+    <script src="../../JS/sub_foro.js" defer></script>
+    <link rel="stylesheet" href="../css/sub_foro.css">
+    
+</head>
+<body>
+    <div class="cabecera">
+        <img class="title_vocesPapel" src="../images/voces_papel.webp"></img> 
+        <div id="btn_inicio"><a href="index.html">Inicio</a></div>
+        <div id="btn_foro"><a href="main_foro.html">Foros</a></div>
+        <select id="desplegable_mercado" onchange="navegarMercado(this.value)">
+            <option disabled selected hidden>Mercado</option>
+            <option value="tienda.html">Tienda</option>
+            <option value="ventas.html">Mis ventas</option>
+        </select>
+        
+        <label id="lblNombreUsuario"></label>
+        
+        <div id="btn_perfil"><a href="mensajes_recibidos.html">Mensajes Recibidos</a></div>
+        <span id="notificacionMensajes" style="display: none; color: red; font-weight: bold;">!</span>
+        <div id="btn_cerrar"><a href="login.html">Salir</a></div>
+         
+</div>
+    <h1 id="tituloPagina">Cargando...</h1>
+    
+    
+    
+
+    <div id="contenidoGrid" style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+        
+    </div>
+    <form id="contenidoForm">
+        <label for="contenido">Escribe algo en el subforo:</label>
+        <textarea id="contenido" name="contenido" rows="4" cols="50" placeholder="Escribe aquí..."></textarea><br><br>
+        <button type="button" onclick="guardarContenido()">Guardar</button>
+    </form>
+    <a href="main_foro.html">Volver</a>
+    <script>
+        
+        const params = new URLSearchParams(window.location.search);
+        const titulo = params.get("titulo");
+
+        
+        fetch(`http://127.0.0.1:5000/subForo/${encodeURIComponent(titulo)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById("tituloPagina").textContent = "Error";
+                    
+                } else {
+                    document.getElementById("tituloPagina").textContent = data.titulo;
+                    
+                }
+            })
+            .catch(error => {
+                document.getElementById("tituloPagina").textContent = "Error";
+                
+            });
+    </script>
+    <script>
+            
+        function navegarMercado(url) {
+            if (url) {
+                window.location.href = url; 
+            }
+        }
+    </script>
+</body>
+</html>
