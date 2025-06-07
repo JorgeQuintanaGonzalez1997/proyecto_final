@@ -9,8 +9,6 @@ from email.mime.multipart import MIMEMultipart
 
 usuario_bp = Blueprint('usuario_bp', __name__)
 
-
-
 @usuario_bp.route('/registrar', methods=['POST'])
 def registrar_usuario():
     try:
@@ -22,10 +20,9 @@ def registrar_usuario():
         
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-        #enviar_correo(email, nombre, password)  
         usuario = Usuario(nombre, email, hashed_password)
+        print(usuario.nombre, usuario.email, usuario.password)
 
-        
         guardar(usuario)
 
         return jsonify({"mensaje": "Usuario registrado con éxito"}), 201
@@ -205,9 +202,8 @@ def crear_tabla():
                 CREATE TABLE IF NOT EXISTS usuarios (
                     id SERIAL PRIMARY KEY,
                     nombre VARCHAR(100),
-                    email VARCHAR(100) UNIQUE,
-                    password VARCHAR(100),
-                    dinero FLOAT DEFAULT 0.0
+                    email VARCHAR(100) ,
+                    password VARCHAR(100)
                 )
             """)
             conn.commit()
@@ -220,7 +216,7 @@ def crear_tabla():
         finally:
             Conexion.cerrar(conn)  # 🔹 Aseguramos que la conexión se cierre
 
-def guardar(self):
+def guardar(usuario):
         conn = Conexion.conectar()  
         if not conn:
             print("No se pudo conectar a la base de datos.")
@@ -229,7 +225,7 @@ def guardar(self):
         try:
             cur = conn.cursor()
             cur.execute("INSERT INTO usuarios (nombre, email, password) VALUES (%s, %s, %s)",
-                        (self.nombre, self.email,self.password ))
+                        (usuario.nombre, usuario.email,usuario.password ))
             conn.commit()
             print("Usuario guardado con éxito")
             cur.close() 

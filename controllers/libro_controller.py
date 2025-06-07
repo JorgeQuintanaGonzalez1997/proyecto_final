@@ -67,7 +67,7 @@ def obtener_libros():
         cur.close()
         conn.close()
 
-        #Lista de diccionarios para convertir la información de los libros en JSON
+        
         libros_lista = [
             
             {   "id":libro[0],
@@ -75,13 +75,12 @@ def obtener_libros():
                 "autor": libro[2], 
                 "precio": libro[3],
                 "idUsuario":libro[4],
-                #Convierte la imagen a texto para poder enviarla por JSON
+                
                 "imagen": base64.b64encode(libro[5]).decode('utf-8') if libro[5] else None,
-                #Convierte la fecha a string, en formato ISO, que es compatible con JSON
+                
                 "fecha_limite": libro[6].isoformat()  if libro[6] else None
             }
-            #El for es un "list comprehesion" sirve para recorrer los libros que hay en la base de datos 
-            # y los convierte en un diccionario
+            
             for libro in libros]
 
         return jsonify(libros_lista), 200

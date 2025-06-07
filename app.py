@@ -46,7 +46,7 @@ app.register_blueprint(puja_bp, url_prefix='/puja')
 user_controller.crear_tabla()
 subForo_controller.crear_tabla()
 libro_controller.crear_tabla()
-Mensaje.crear_tabla()
+mensaje_controller.crear_tabla()
 puja_controller.crear_tabla()
 
 

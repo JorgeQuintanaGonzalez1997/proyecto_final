@@ -1,6 +1,7 @@
 * {
     
     box-sizing: border-box;
+    object-fit: contain; 
 }
 html {
     font-size: 16px; /* base para rem */
@@ -24,6 +25,7 @@ body {
     box-shadow: none;
     border-radius: 0;
     padding: 0;
+    
 }
 /* CABECERA MEJORADA */
 .cabecera {
@@ -149,16 +151,19 @@ body {
 
 /* PRESENTACIÓN GENERAL */
 .presentacion_0 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    background-color: #F5F5DC;
+    max-width: 800px;
+    margin: 36px auto 28px auto;
+    padding: 28px 32px;
+    background: #fffbe6;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(168,88,34,0.10);
+    font-size: 1.25rem;
+    color: #a85822;
     text-align: center;
-    height: 6.25rem;
-    margin: 1.25rem 3.1rem;
-    padding: 1.25rem;
-    border-radius: 0.6rem;
+    line-height: 1.7;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 .presentacion_1 {
     display: grid;
