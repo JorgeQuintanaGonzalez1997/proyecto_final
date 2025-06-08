@@ -12,14 +12,14 @@ class Conexion:
                 host="localhost",
                 port="5432"
             )
-            print("✅ Conexión exitosa")
+            print("Conexión exitosa")
             return conn  
         except psycopg2.Error as e:
-            print(f"❌ Error de conexión: {e}")
+            print(f"Error de conexión: {e}")
             return None  
 
     @staticmethod
     def cerrar(conn):
         if conn:
             conn.close()
-            print("🔌 Conexión cerrada")
+            print("Conexión cerrada")
