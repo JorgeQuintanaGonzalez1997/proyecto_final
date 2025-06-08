@@ -4,66 +4,7 @@ from DB.conectar_db import Conexion
 
 subForo_bp = Blueprint('subForo_bp', __name__)
 
-# HTML básico para el contenido de los subforos
-# contenido_predefinido = '''
 
-#     <div id="contenidoGrid" style="display: grid; grid-template-columns: 1fr; gap: 10px;"></div>
-#     <form id="contenidoForm">
-#         <label for="contenido">Contenido:</label>
-#         <textarea id="contenido" name="contenido" rows="10" cols="50"></textarea><br><br>
-#         <button type="button" onclick="guardarContenido()">Guardar</button>
-#     </form>
-#     <script>
-#         function guardarContenido() {
-#             const contenido = document.getElementById("contenido").value;
-#             fetch(`http://127.0.0.1:5000/subForo/guardarContenido`, {
-#                 method: 'POST',
-#                 headers: {
-#                     'Content-Type': 'application/json'
-#                 },
-#                 body: JSON.stringify({ titulo: "${titulo}", contenido: contenido })
-#             })
-#             .then(response => response.json())
-#             .then(data => {
-#                 if (data.error) {
-#                     alert(data.error);
-#                 } else {
-#                     alert("Contenido guardado con éxito");
-#                     const grid = document.getElementById("contenidoGrid");
-#                     const nuevoElemento = document.createElement("div");
-#                     nuevoElemento.textContent = contenido;
-#                     grid.appendChild(nuevoElemento);
-#                     document.getElementById("contenido").value = "";
-#                 }
-#             })
-#             .catch(error => console.error('Error:', error));
-#         }
-#     </script>
-# '''
-# contenido_predefinido='''
-# <!DOCTYPE html>
-# <html lang="es">
-# <head>
-#     <meta charset="UTF-8">
-#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-#     <title>Voces de papel</title>
-#     <link rel="stylesheet" href="../css/index.css">
-#     <script src="../../JS/sub_foro.js" defer></script>  
-# </head>
-# <body>
-
-#     <form id="contenidoForm">
-#         <label for="contenido">Contenido:</label>
-#         <textarea id="contenido" name="contenido" rows="10" cols="50"></textarea><br><br>
-#         <button type="button" onclick="guardarContenido()">Guardar</button>
-#     </form>
-    
-#     </body>
-# </html>
-
-
-
-# '''
 contenido_predefinido=""
 @subForo_bp.route('/crear', methods=['POST'])
 def crear_subForo():
@@ -74,8 +15,7 @@ def crear_subForo():
 
         subForo = SubForo(titulo, contenido)
         guardar(subForo)
-        #subForo.guardar()
-
+        
         return jsonify({"mensaje": "SubForo creado"}), 201
 
     except Exception as e:
