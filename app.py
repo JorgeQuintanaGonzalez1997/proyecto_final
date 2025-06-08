@@ -30,12 +30,7 @@ from models.puja import Puja
 
 app = Flask(__name__)  
 
-
-
-
 CORS(app, supports_credentials=True)
-
-# Registramos el blueprint (usuario_bp) en la aplicación para definir las rutas del controlador de usuarios
 
 app.register_blueprint(subForo_bp, url_prefix='/subForo')
 app.register_blueprint(usuario_bp, url_prefix='/usuario')
@@ -48,7 +43,6 @@ subForo_controller.crear_tabla()
 libro_controller.crear_tabla()
 mensaje_controller.crear_tabla()
 puja_controller.crear_tabla()
-
 
 if __name__ == '__main__':  
     app.run(debug=True)  
