@@ -45,7 +45,7 @@ mensaje_controller.crear_tabla()
 puja_controller.crear_tabla()
 
 if __name__ == '__main__':  
-    app.run(debug=True)  
+    app.run(debug=True,host='0.0.0.0')  
     
     
     

@@ -14,14 +14,14 @@ def registrar_usuario():
     try:
         data = request.json
         nombre = data["nombre"]
-        email = data["email"]
+        
         password = data["password"]
 
         
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        password_encriptada = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-        usuario = Usuario(nombre, email, hashed_password)
-        print(usuario.nombre, usuario.email, usuario.password)
+        usuario = Usuario(nombre,  password_encriptada)
+        
 
         guardar(usuario)
 
@@ -121,49 +121,6 @@ def obtener_usuario():
 
     return jsonify({"nombre": nombre}), 200
 
-# @usuario_bp.route("/getDinero",methods=["GET"])
-# def getDinero():
-    
-#     cookie = request.cookies.get('cookieSesion')
-
-
-#     print("cookie recibido en getDinero:", cookie)
-
-#     if not cookie:
-
-
-#         return jsonify({"error": "No autorizado"}), 401
-
-    
-#     try:
-#         user_id = cookie.split('-')[1]  
-        
-#         print("ID de usuario extraído:", user_id)
-#     except IndexError:
-#         return jsonify({"error": "cookie inválido"}), 400
-
-    
-#     query = "SELECT dinero FROM usuarios WHERE id = %s"
-#     conn = Conexion.conectar()
-
-
-#     cur = conn.cursor()
-#     cur.execute(query, (user_id,))
-
-#     result = cur.fetchone()
-#     print("Resultado de la consulta:", result)
-
-#     cur.close()
-
-#     conn.close()
-
-#     if result is None:
-#         return jsonify({"error": "Usuario no encontrado"}), 404
-
-#     dinero = float(result[0])  
-#     print("Dinero del usuario:", dinero)
-
-#     return jsonify({"dinero": dinero}), 200
 
 
 
@@ -201,8 +158,8 @@ def crear_tabla():
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS usuarios (
                     id SERIAL PRIMARY KEY,
-                    nombre VARCHAR(100),
-                    email VARCHAR(100) ,
+                    nombre VARCHAR(100) unique NOT NULL,
+                    
                     password VARCHAR(100)
                 )
             """)
@@ -224,8 +181,8 @@ def guardar(usuario):
         
         try:
             cur = conn.cursor()
-            cur.execute("INSERT INTO usuarios (nombre, email, password) VALUES (%s, %s, %s)",
-                        (usuario.nombre, usuario.email,usuario.password ))
+            cur.execute("INSERT INTO usuarios (nombre,  password) VALUES (%s, %s)",
+                        (usuario.nombre, usuario.password ))
             conn.commit()
             print("Usuario guardado con éxito")
             cur.close() 
@@ -235,35 +192,7 @@ def guardar(usuario):
 
         finally:
             Conexion.cerrar(conn)
-# def enviar_correo(destinatario, nombre_usuario, password):
-#     remitente = "vocesdepapel2@gmail.com"
-#     clave = "vocesdepapel123"  # Usa una contraseña de aplicación, no la normal
-#     asunto = "Registro exitoso en Voces de Papel"
-#     cuerpo = f"""
-#     Hola {nombre_usuario},
 
-#     ¡Bienvenido a Voces de Papel!
-#     Tus datos de acceso son:
-#     Usuario: {nombre_usuario}
-#     Contraseña: {password}
-
-#     ¡Gracias por registrarte!
-#     """
-
-#     msg = MIMEMultipart()
-#     msg['From'] = remitente
-#     msg['To'] = destinatario
-#     msg['Subject'] = asunto
-#     msg.attach(MIMEText(cuerpo, 'plain'))
-
-#     try:
-#         server = smtplib.SMTP('smtp.gmail.com', 587)
-#         server.starttls()
-#         server.login(remitente, clave)
-#         server.sendmail(remitente, destinatario, msg.as_string())
-#         server.quit()
-#     except Exception as e:
-#         print("Error enviando correo:", e)
 
 
 

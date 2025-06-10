@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        
         let nombre = document.getElementById("nombre").value;
-        //let email = document.getElementById("email").value;
-        let email='correo@gmail.com';
+        
         let password = document.getElementById("password").value;
 
         
@@ -14,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ nombre,password,email })
+            body: JSON.stringify({ nombre,password })
         })
         .then(response => response.json())
         .then(data => {
